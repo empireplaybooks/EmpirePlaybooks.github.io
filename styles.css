@@ -1,0 +1,491 @@
+/* ============================================
+   TRAVEL HEALTHCARE PAY CALCULATOR - STYLES
+   ============================================ */
+
+/* === EASY CUSTOMIZATION SECTION === */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+}
+
+/* === RESET & BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* === HEADER === */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* === CALCULATOR WRAPPER === */
+.calculator-wrapper {
+    padding: 30px 20px;
+}
+
+/* === CONTRACT SECTIONS === */
+.contract-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+}
+
+.contract-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+/* === FORM GROUPS === */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+/* === TOOLTIP === */
+.tooltip {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    cursor: help;
+    margin-left: 4px;
+    position: relative;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-dark);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: normal;
+    width: 250px;
+    z-index: 1000;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+/* === BUTTONS === */
+.calculate-btn,
+.toggle-btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calculate-btn {
+    background: var(--primary-color);
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.calculate-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.toggle-btn {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.toggle-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* === ADVANCED OPTIONS === */
+.advanced-toggle {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.advanced-options {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* === COMPARISON TOGGLE === */
+.comparison-toggle {
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* === RESULTS === */
+.results {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid var(--success-color);
+}
+
+.results h3 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--bg-light);
+    border-radius: 6px;
+}
+
+.result-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.result-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.result-value.highlight {
+    font-size: 28px;
+    color: var(--primary-color);
+}
+
+/* === BREAKDOWN TABLE === */
+.breakdown {
+    margin-top: 25px;
+}
+
+.breakdown h4 {
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    font-size: 16px;
+}
+
+.breakdown table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.breakdown table tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breakdown table td {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.breakdown table td:first-child {
+    color: var(--text-dark);
+}
+
+.breakdown table td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+.breakdown table tr.deduction td:last-child {
+    color: var(--danger-color);
+}
+
+/* === WARNINGS === */
+.impact-warning,
+.tax-home-warning {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fef3c7;
+    border-left: 4px solid var(--warning-color);
+    border-radius: 6px;
+}
+
+.impact-warning h4,
+.tax-home-warning h4 {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.impact-warning p,
+.tax-home-warning p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.impact-warning ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.impact-warning li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.learn-more {
+    margin-top: 15px;
+}
+
+.learn-more a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.learn-more a:hover {
+    text-decoration: underline;
+}
+
+/* === EMAIL CAPTURE === */
+.email-capture {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.email-capture h4 {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    font-size: 18px;
+}
+
+.email-form {
+    display: flex;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto 10px;
+}
+
+.email-form input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.email-form button {
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.email-form button:hover {
+    background: var(--primary-dark);
+}
+
+.email-capture small {
+    color: var(--text-light);
+    font-size: 12px;
+}
+
+/* === COMPARISON RESULTS === */
+.comparison-results {
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+}
+
+.comparison-results h3 {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-size: 20px;
+}
+
+.winner-announcement {
+    padding: 20px;
+    background: white;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.winner-announcement.contract1-wins {
+    color: var(--success-color);
+    border: 2px solid var(--success-color);
+}
+
+.winner-announcement.contract2-wins {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+/* === FOOTER === */
+footer {
+    background: var(--bg-light);
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.disclaimer {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fef2f2;
+    border-left: 4px solid var(--danger-color);
+    border-radius: 6px;
+}
+
+.disclaimer p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.last-updated {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .calculator-wrapper {
+        padding: 20px 15px;
+    }
+
+    .contract-section {
+        padding: 15px;
+    }
+
+    .result-value {
+        font-size: 20px;
+    }
+
+    .result-value.highlight {
+        font-size: 24px;
+    }
+
+    .email-form {
+        flex-direction: column;
+    }
+
+    .email-form button {
+        width: 100%;
+    }
+}
