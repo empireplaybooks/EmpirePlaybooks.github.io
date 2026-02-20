@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Healthcare Pay Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Travel Healthcare Pay Calculator</h1>
+            <p class="subtitle">For nurses, therapists, allied health, and locum professionals</p>
+        </header>
+
+        <div class="calculator-wrapper">
+            <!-- Contract 1 (Always visible) -->
+            <div class="contract-section" id="contract1">
+                <h2>Contract Details</h2>
+                
+                <div class="form-group">
+                    <label for="hourlyRate1">Hourly Rate ($)</label>
+                    <input type="number" id="hourlyRate1" placeholder="45.00" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="hoursPerWeek1">Hours per Week</label>
+                    <input type="number" id="hoursPerWeek1" value="40" min="0" max="168">
+                </div>
+
+                <div class="form-group">
+                    <label for="weeklyStipend1">Weekly Stipend ($)</label>
+                    <input type="number" id="weeklyStipend1" placeholder="1500.00" step="0.01" min="0">
+                    <small>Housing + meals & incidentals combined</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="contractLength1">Contract Length (weeks)</label>
+                    <input type="number" id="contractLength1" value="13" min="1" max="52">
+                </div>
+
+                <div class="form-group">
+                    <label for="state1">State of Assignment</label>
+                    <select id="state1">
+                        <option value="">Select state...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="filingStatus1">Filing Status</label>
+                    <select id="filingStatus1">
+                        <option value="single">Single</option>
+                        <option value="married">Married Filing Jointly</option>
+                        <option value="hoh">Head of Household</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taxHome1">
+                        Do you maintain a tax home?
+                        <span class="tooltip" data-tooltip="A tax home is your permanent residence where you pay rent/mortgage and return to regularly. You must duplicate expenses while traveling for stipends to be non-taxable.">ⓘ</span>
+                    </label>
+                    <select id="taxHome1">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <!-- Advanced Options Toggle -->
+                <div class="advanced-toggle">
+                    <button type="button" id="advancedToggle1" class="toggle-btn">+ Advanced Options</button>
+                </div>
+
+                <div class="advanced-options" id="advancedOptions1" style="display: none;">
+                    <div class="form-group">
+                        <label for="otherIncome1">Other Annual Income ($)</label>
+                        <input type="number" id="otherIncome1" placeholder="0" step="1" min="0">
+                        <small>Leave blank if this contract is your only income</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="overtimeHours1">Expected Overtime Hours/Week</label>
+                        <input type="number" id="overtimeHours1" placeholder="0" step="0.5" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="overtimeRate1">Overtime Rate Multiplier</label>
+                        <input type="number" id="overtimeRate1" value="1.5" step="0.1" min="1">
+                        <small>Typically 1.5x or 2x</small>
+                    </div>
+                </div>
+
+                <button type="button" class="calculate-btn" onclick="calculateContract(1)">Calculate</button>
+
+                <!-- Results Section -->
+                <div class="results" id="results1" style="display: none;">
+                    <h3>Your Take-Home Pay</h3>
+                    
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <span class="result-label">Weekly Net Take-Home</span>
+                            <span class="result-value" id="weeklyNet1">$0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Total Contract Net</span>
+                            <span class="result-value highlight" id="totalNet1">$0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Effective Hourly Rate</span>
+                            <span class="result-value" id="effectiveRate1">$0</span>
+                        </div>
+                    </div>
+
+                    <div class="breakdown">
+                        <h4>Weekly Breakdown</h4>
+                        <table>
+                            <tr>
+                                <td>Gross Taxable Income</td>
+                                <td id="grossTaxable1">$0</td>
+                            </tr>
+                            <tr>
+                                <td>Non-Taxable Stipend</td>
+                                <td id="stipendAmount1">$0</td>
+                            </tr>
+                            <tr class="deduction">
+                                <td>Federal Tax</td>
+                                <td id="federalTax1">-$0</td>
+                            </tr>
+                            <tr class="deduction">
+                                <td>State Tax <span id="stateTaxNote1"></span></td>
+                                <td id="stateTax1">-$0</td>
+                            </tr>
+                            <tr class="deduction">
+                                <td>FICA (Social Security + Medicare)</td>
+                                <td id="fica1">-$0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Long-Term Impact Warning -->
+                    <div class="impact-warning" id="impactWarning1">
+                        <h4>⚠️ Long-Term Financial Impact</h4>
+                        <p>Your reported <strong>taxable income</strong> is <span id="taxableIncome1">$0</span>/year.</p>
+                        <p>This is what lenders, Social Security, and retirement accounts see - not your actual earnings.</p>
+                        <ul>
+                            <li><strong>Mortgage qualification:</strong> Based on taxable income only</li>
+                            <li><strong>Social Security benefits:</strong> Calculated from taxable wages</li>
+                            <li><strong>Retirement contributions:</strong> Limited to taxable W-2 income</li>
+                        </ul>
+                        <p class="learn-more">
+                            <!-- AFFILIATE LINK PLACEHOLDER -->
+                            <a href="#" target="_blank">Learn how to optimize your tax strategy →</a>
+                        </p>
+                    </div>
+
+                    <!-- Tax Home Warning -->
+                    <div class="tax-home-warning" id="taxHomeWarning1" style="display: none;">
+                        <h4>⚠️ Important: No Tax Home</h4>
+                        <p>Without a tax home, your stipends are <strong>fully taxable</strong>. This significantly reduces your take-home pay.</p>
+                        <p>Consider consulting a travel healthcare tax specialist to ensure compliance and maximize your earnings.</p>
+                        <p class="learn-more">
+                            <!-- AFFILIATE LINK PLACEHOLDER -->
+                            <a href="#" target="_blank">Find a travel nurse tax specialist →</a>
+                        </p>
+                    </div>
+
+                    <!-- Email Capture -->
+                    <div class="email-capture">
+                        <h4>💌 Get Your Results + Weekly Contract Tips</h4>
+                        <form class="email-form" onsubmit="return captureEmail(event, 1)">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Send Me Tips</button>
+                        </form>
+                        <small>We respect your privacy. Unsubscribe anytime.</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Mode Toggle -->
+            <div class="comparison-toggle">
+                <button type="button" id="compareToggle" class="toggle-btn" onclick="toggleComparison()">
+                    + Compare with Another Contract
+                </button>
+            </div>
+
+            <!-- Contract 2 (Hidden by default) -->
+            <div class="contract-section" id="contract2" style="display: none;">
+                <h2>Contract 2 Details</h2>
+                
+                <div class="form-group">
+                    <label for="hourlyRate2">Hourly Rate ($)</label>
+                    <input type="number" id="hourlyRate2" placeholder="45.00" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="hoursPerWeek2">Hours per Week</label>
+                    <input type="number" id="hoursPerWeek2" value="40" min="0" max="168">
+                </div>
+
+                <div class="form-group">
+                    <label for="weeklyStipend2">Weekly Stipend ($)</label>
+                    <input type="number" id="weeklyStipend2" placeholder="1500.00" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="contractLength2">Contract Length (weeks)</label>
+                    <input type="number" id="contractLength2" value="13" min="1" max="52">
+                </div>
+
+                <div class="form-group">
+                    <label for="state2">State of Assignment</label>
+                    <select id="state2">
+                        <option value="">Select state...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="filingStatus2">Filing Status</label>
+                    <select id="filingStatus2">
+                        <option value="single">Single</option>
+                        <option value="married">Married Filing Jointly</option>
+                        <option value="hoh">Head of Household</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="taxHome2">Do you maintain a tax home?</label>
+                    <select id="taxHome2">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <button type="button" class="calculate-btn" onclick="calculateContract(2)">Calculate Contract 2</button>
+
+                <!-- Results Section -->
+                <div class="results" id="results2" style="display: none;">
+                    <h3>Contract 2 Take-Home Pay</h3>
+                    
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <span class="result-label">Weekly Net Take-Home</span>
+                            <span class="result-value" id="weeklyNet2">$0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Total Contract Net</span>
+                            <span class="result-value highlight" id="totalNet2">$0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Effective Hourly Rate</span>
+                            <span class="result-value" id="effectiveRate2">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Results -->
+            <div class="comparison-results" id="comparisonResults" style="display: none;">
+                <h3>📊 Contract Comparison</h3>
+                <div class="winner-announcement" id="winnerAnnouncement"></div>
+            </div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+            <p>Have feedback or suggestions to improve this calculator?</p>
+            <a href="mailto:EmpirePlaybooks@gmail.com?subject=Calculator Feedback&body=I have feedback about the Travel Healthcare Pay Calculator:%0D%0A%0D%0A" class="feedback-btn">📧 Send Us Feedback</a>
+        </div>
+
+        <footer>
+            <div class="disclaimer">
+                <p><strong>Important:</strong> This calculator provides estimates for comparison purposes only. Actual tax liability depends on your total annual income, deductions, credits, and other factors. Consult a tax professional for personalized advice. We are not tax advisors.</p>
+            </div>
+            <div class="last-updated">
+                Tax data current as of <strong>January 2026</strong>
+            </div>
+        </footer>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
