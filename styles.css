@@ -489,3 +489,40 @@ footer {
         width: 100%;
     }
 }
+
+/* === FEEDBACK SECTION === */
+.feedback-section {
+    background: var(--bg-light);
+    border-top: 2px solid var(--border-color);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.feedback-section p {
+    color: var(--text-dark);
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.feedback-btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.feedback-btn:active {
+    transform: translateY(0);
+}
