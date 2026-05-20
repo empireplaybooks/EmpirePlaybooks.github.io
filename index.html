@@ -564,9 +564,10 @@
             const diffPct = (diff / staffAnnualNet) * 100;
 
             document.getElementById('comparisonText').innerHTML = 
-                `Your travel package nets approximately <strong>${formatCurrency(travelAnnualNet)}</strong> annually (extrapolated), compared to 
+                `Your travel package nets approximately <strong>${formatCurrency(travelAnnualNet)}</strong> annually (extrapolated over 52 weeks), compared to 
                 <strong>${formatCurrency(staffAnnualNet)}</strong> for the staff position. 
-                That's a difference of <strong>${formatCurrency(diff)}</strong> (${diffPct.toFixed(1)}%) per year.`;
+                That's a difference of <strong>${formatCurrency(diff)}</strong> (${diffPct.toFixed(1)}%) per year.<br><br>
+                <em style="font-size:13px; color:#64748B;">Note: The travel figure assumes 52 continuous weeks at this package rate. Most travel nurses work 44–48 weeks annually after gaps between assignments. It also does not account for tax home maintenance costs or benefits differences. See our <a href="https://travelhealthcarepay.com/2026/04/29/travel-nurse-vs-staff-nurse-pay-2026-the-real-numbers-trade-offs-how-to-decide/" style="color:#0E7C7B;">Travel Nurse vs. Staff Nurse Pay guide</a> for a full real-world comparison.</em>`;
             compBox.style.display = 'block';
         } else {
             compBox.style.display = 'none';
