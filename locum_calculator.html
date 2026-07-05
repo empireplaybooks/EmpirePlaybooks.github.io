@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,12 +28,6 @@
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            box-sizing: border-box;
-        }
-        @media (max-width: 600px) {
-            .container { padding: 20px; }
-            th, td { padding: 8px; font-size: 14px; }
-            h1 { font-size: 20px; }
         }
         header {
             border-bottom: 2px solid var(--primary);
@@ -103,12 +97,6 @@
         #results {
             margin-top: 40px;
             display: none;
-        }
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 20px;
         }
         .results-header {
             background-color: var(--primary);
@@ -260,20 +248,18 @@
 
     <div id="results">
         <div class="results-header">Income Comparison Summary</div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Line Item</th>
-                        <th>Locum 1099</th>
-                        <th>Employed W-2</th>
-                    </tr>
-                </thead>
-                <tbody id="resultBody">
-                    <!-- Rows will be injected here -->
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Item</th>
+                    <th>Locum 1099</th>
+                    <th>Employed W-2</th>
+                </tr>
+            </thead>
+            <tbody id="resultBody">
+                <!-- Rows will be injected here -->
+            </tbody>
+        </table>
 
         <div class="diff-box" id="summaryText"></div>
 
@@ -286,7 +272,7 @@
     <div class="disclaimers">
         <p><strong>Disclaimers:</strong></p>
         <p>1. This calculator provides estimates for planning and educational purposes only. It does not constitute tax or legal advice.</p>
-        <p>2. QBI deduction shown is a simplified 20% planning estimate. Actual deduction may be limited by taxable income, wages, qualified property, and SSTB rules. Consult a CPA.</p>
+        <p>2. QBI deduction shown is a simplified 23% planning estimate. Actual deduction may be limited by taxable income, wages, qualified property, and SSTB rules. Consult a CPA.</p>
         <p>3. State income tax is an approximation using a single flat rate. State taxes are often progressive, and nonresident, reciprocity, and multi-state rules are not reflected.</p>
         <p>4. Federal tax brackets and parameters reflect 2026 IRS guidance. Tax law changes frequently — verify current figures with a licensed tax professional.</p>
         <p>5. QBI deduction made permanent by the One Big Beautiful Bill Act (OBBBA), Public Law 119-21, signed July 4, 2025.</p>
@@ -358,7 +344,7 @@
         const addMedTaxLocum = Math.max(0, netSeIncome - addMedThreshold) * 0.009;
         const totalSeTax = ssTaxLocum + medTaxLocum + addMedTaxLocum;
         const seTaxDed = totalSeTax * 0.5;
-        const qbiDed = netSeIncome * 0.20;
+        const qbiDed = netSeIncome * 0.23;
         const taxableIncomeLocum = Math.max(0, netSeIncome - seTaxDed - qbiDed - stdDed);
         const fedTaxLocum = calculateFederalTax(taxableIncomeLocum, filingStatus);
         const stateTaxLocum = netSeIncome * stateRate;
@@ -437,3 +423,4 @@
 
 </body>
 </html>
+    
